@@ -13,6 +13,9 @@ if (USERNAME.length < 1 || USERNAME.length > 30) {
 if (/\s/.test(USERNAME)) {
   throw new Error("username must be a single word with no whitespace");
 }
+if (USERNAME.trim() !== USERNAME) {
+  throw new Error("username must not start or end with whitespace");
+}
 
 mkdirSync(outDir, { recursive: true });
 writeFileSync(outFile, USERNAME, "utf8");
